@@ -29,7 +29,7 @@ export default function DeliveryCodes({ categories }: { categories: Categories }
                 <h3 id={`${platform}-${category}`} className="text-xl font-semibold mt-6 mb-3 text-gray-600 dark:text-gray-400">{category}</h3>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {codes.map((code) => (
-                    <CodeCard key={code.code} {...code} platform={platform} />
+                    <CodeCard key={code.code} {...code} />
                   ))}
                 </div>
               </div>
@@ -41,7 +41,7 @@ export default function DeliveryCodes({ categories }: { categories: Categories }
   )
 }
 
-function CodeCard({ code, content, expiry, deep_link, platform }: CodeData & { platform: string }) {
+function CodeCard({ code, content, expiry, deep_link }: CodeData) {
   const copyCode = () => {
     navigator.clipboard.writeText(code).then(() => {
       alert('優惠碼已複製：' + code)
